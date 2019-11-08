@@ -1,89 +1,74 @@
-/* Nim Simple by Galloway (class Kata) */
+ /* NIM simple by Galloway */
 
-/* Global */
+/* Global Variables */
 var games = 0;
 var again = true;
-var next  = 0;
 var count = 0;
-var turn = 0;
 var turns = 0;
+var games = 0;
+var next = 
 /* Main */
-// while (again == true){
-	/* reset variables for new game */
-	alert("game "+games);
-	count = 0;
-	turn = 0;
-	turns = 0;
-	next = games%2;
-	while (count < 21){
-		if (next == 0){
-			turn = CPUTurn();
-			count += turn;
-			alert("The count is now "+count+".");
-			next = nextSwitch(next);
+while again==true{
+	while count<21{
+		if (next = 0){
+			turn = cpuTurn();
+			alert("computer counts up to " +turn)";
+			count+=turn;
 		}
-		else {
-			turn = userTurn();
-			count += turn;
-			alert("The count is now "+count+".");
-			next = nextSwitch(next);
-			console.log("next = "+next);
+		else if (next!=0){
+			userTurn();
+			count+=turn;
 		}
-	
+	}
 	declareWinner();
-	games++;
-	alert("games played = " +games);
-	if (playAgain() == false){
-		break;
-	}
-	}
-//}
+	again = playAgain();
+	if playAgain=false break;
+}
+	else if playAgain=true alert("time for a new game!");
 
+	
+	
+	
 /* Functions */
-function CPUTurn(){
-	turn = Math.floor(Math.random()*3)+1;
-	console.log("CPUTurn returns "+turn);
+
+function userTurn(){
+	turn = prompt("the count is " +count+ ". How many do you want to count up? (1-3)");
+	return Number(turn);
+}
+function cpuTurn(){
+	turn=Math.floor(Math.random()*3)+1;
 	return turn;
 }
 
-function userTurn(){
-	turn = prompt("Pick a number 1-3");
-	if (turn > 0 && turn < 4){
-		console.log("Userturn = "+turn);
-		return Number(turn);
-	}
-	else alert("Guess is out of range, try again.");
-}
-
-function declareWinner(){
-	if (next == 0){
-		alert("You lose!");
-	}
-	else alert("You win!");
-}
-
 function playAgain(){
-	again = prompt("Play again? y = yes");
-	if (again = "y"){
+playAgain = prompt("Play again? y for yes");
+	if playAgain==("y"){
 		return true;
 	}
-	else return false;
+	else {
+		return false;
+	}
+}
+
+function declareWinner(next){
+	if (next==0){
+		alert ("You win!");
+	}
+	else if (next!=0){
+		alert ("You lose!");
+	}
 }
 
 function nextSwitch(next){
-	if (next == 0){
-		next = 1;
-		return next;
+	if (next==0){
+		return 1;
 	}
-	else {
-		next = 0;
-		return next;
+	else if (next==1){
+		return 0;
 	}
-function playAgain(){
-	again = prompt("Play again? y = yes");
-	if (again = "y"){
-		return true;
-	}
-	else return false;
 }
-}
+
+
+
+
+//nim-simple.js
