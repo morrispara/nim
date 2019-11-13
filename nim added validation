@@ -1,0 +1,34 @@
+// Nim Super Duper Simple (no input validation)
+
+//kata: Add User validation (only 1, 2 or 3) and prevent CPU overshoot.
+
+var count = 0; var playerInput = 0; var cpuInput = 0; var winner=null;
+alert("Welcome to Nim! You go first.");
+while (count<21) {
+   winner="CPU"; 
+   count+=playerTurn();
+   alert("Current count is "+count);
+   if (count<21) {
+      winner="you"; 
+      count+=cpuTurn();
+      alert("Current count is "+count);
+   }
+}
+alert(winner+" won!");
+
+function playerTurn(){
+  var turn = 0;
+  while (turn<1 || turn>3){
+  turn = prompt("Count how many? (1-3)");
+  }
+  return Number(turn);
+}
+
+function cpuTurn(){
+  var turn=Math.floor(Math.random()*3)+1;
+  while ((turn+count)>21){
+	  turn=Math.floor(Math.random()*3)+1;
+  }
+  alert("CPU counts "+turn+".");
+  return turn;
+}
